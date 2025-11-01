@@ -249,6 +249,8 @@ export interface InputOptionsProperty {
     updatedEsc?: boolean;
     selectOnClick?: boolean;
     actionOnEsc?: InputActionEscType;
+    maxlength?: number;
+    readonly?: boolean;
 }
 
 export enum InputOptionType {
@@ -256,7 +258,9 @@ export enum InputOptionType {
     text = 'text',
     date = 'date',
     time = 'time',
-    datetime = 'datetime'
+    datetime = 'datetime',
+    textarea = 'textarea',
+    password = 'password'
 }
 
 export enum InputTimeFormatType {
@@ -459,6 +463,39 @@ export interface GaugeTableProperty {
     type: TableType;
     options: TableOptions;
     events: GaugeEvent[];
+}
+
+export interface GaugeSchedulerProperty {
+    id: string;
+    devices: SchedulerDevice[];
+    deviceActions: SchedulerDeviceAction[];
+    permission: number;
+    permissionRoles: PermissionRoles;
+    accentColor: string;
+    backgroundColor: string;
+    textColor: string;
+    secondaryTextColor: string;
+    borderColor: string;
+    hoverColor: string;
+    timeFormat: string;
+}
+
+export interface SchedulerDeviceAction {
+    deviceName: string;
+    action: string;
+    actparam?: string;
+    actoptions?: any;
+    eventTrigger?: 'on' | 'off';
+}
+
+export interface SchedulerDevice {
+    variableId: string;
+    name: string;
+    permission?: number;
+    permissionRoles?: {
+        show: string[];
+        enabled: string[];
+    };
 }
 
 export enum TableType {
